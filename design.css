@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em,font,img,b,u,i,ol,ul,li,form,label,table,caption,tbody,tfoot,thead,tr,th,td{margin: 0;padding: 0;}
+img,div{border-width:0px;}
+a{text-decoration: none;}
+img{vertical-align: bottom;}
+textarea {resize: none;}
+body {
+	font-family:  "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "游ゴシック", YuGothic, "メイリオ", Meiryo, sans-serif;
+}
+
+
+/* ヘッダー */
+body{
+  background: #f3f6f7;
+}
+#page{
+  padding:50px 0px;
+}
+
+
+/*クラス*/
+.clear-fix{clear:both;}
