@@ -2,9 +2,7 @@
 <html lang="ja"> 
 <head>
 <meta charset="utf-8">
-<title>Title</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
+<title>GifConverter</title>
 <meta name="viewport" content="width=device-width">
 <link rel='stylesheet' href='design.css'>
 <script src="js/jquery-2.0.2.min.js"></script>
@@ -37,11 +35,11 @@ function AjaxProc(url, postdata, callback){
 <body>
 <div id="page">
 
-<div style="background: #fff;box-shadow: 0px 0px 2px 0px #888;width:800px;margin:auto;padding:50px 0px;border-radius: 5px;">
+<div id="upload-area">
   <form>
     <input type="file" id="upload_movie_form" style="display: none;">
   </form>
-  <div style="text-align: center;height:35px;line-height:35px;width:120px;margin:auto;border-radius: 5px;background: #f11717;color:#fff;cursor: pointer;" onclick="uploadMovie();">Upload</div>
+  <div id="upload-area-send-button" onclick="uploadMovie();">Upload</div>
 </div>
 
 </div>
