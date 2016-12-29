@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+$dir = __DIR__.'/gif';
+$files = scandir($dir);
+?><!DOCTYPE html>
 <html lang="ja"> 
 <head>
 <meta charset="utf-8">
@@ -41,7 +44,15 @@ function AjaxProc(url, postdata, callback){
   </form>
   <div id="upload-area-send-button" onclick="uploadMovie();">Upload</div>
 </div>
-
+<div style="width:800px;margin:20px auto 0px;">
+  <?php
+  foreach($files as $v){
+    if($v != "." && $v != ".."){
+      echo "<div style='background-image: url(./gif/{$v});width:200px;height:120px;float:left;background-size: cover;background-position: 50% 50%;'></div>";
+    }
+  }
+  ?>
+</div>
 </div>
 </body>
 </html>
