@@ -10,10 +10,13 @@ $files = scandir($dir);
 <link rel='stylesheet' href='design.css'>
 <script src="js/jquery-2.0.2.min.js"></script>
 <script type="text/javascript">
-function uploadMovie(){
+
+function uploadMovieButton(){
   var upload_movie_form = document.getElementById("upload_movie_form");
   upload_movie_form.click();
-  console.log(upload_movie_form);
+}
+
+function uploadMovie(){
   postdata = "data=1";
   AjaxProc("https://tomo.syo.tokyo/gifconverter/cgi/convert_movie.php",postdata,{
     
@@ -21,17 +24,12 @@ function uploadMovie(){
 }
 
 function AjaxProc(url, postdata, callback){
-  //alert(postdata);
-	$.ajax({
-		url: url,
-		type: 'POST',
-		data: postdata,
-		success: function(data) {
-			alert(data);
-			data = JSON.parse(data);
-			callback(data);
-		}
-	});
+  var req = new XMLHttpRequest();
+  req.open('POST', url, true);
+  req.setRequestHeader('content-type','application/x-www-form-urlencoded;charset=UTF-8');
+  req.send('name=' + encodeURIComponent(document.fm.name.value));
+  var data = eval('(' + req.responseText + ')');
+  alert(data);
 }
 </script>
 </head>
@@ -39,10 +37,10 @@ function AjaxProc(url, postdata, callback){
 <div id="page">
 
 <div id="upload-area">
-  <form>
+  <form onchange="uploadMovie();">
     <input type="file" id="upload_movie_form" style="display: none;">
   </form>
-  <div id="upload-area-send-button" onclick="uploadMovie();">Upload</div>
+  <div id="upload-area-send-button" onclick="uploadMovieButton();">Upload</div>
 </div>
 <div style="width:800px;margin:20px auto 0px;">
   <?php
