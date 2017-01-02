@@ -15,31 +15,36 @@ function uploadMovieButton(){
   var upload_movie_form = document.getElementById("upload_movie_form");
   upload_movie_form.click();
 }
-
-function uploadMovie(){
-  postdata = "data=1";
-  AjaxProc("https://tomo.syo.tokyo/gifconverter/cgi/convert_movie.php",postdata,{
-    
+$(document).on('change','.movieform',function(){
+  var fd = new FormData();
+  if($("#upload_movie_form").val()!== ''){
+    fd.append("file", $("#upload_movie_form").prop("files")[0] );
+  }
+  fd.append("dir",$("#hoge").val());
+  var postData = {
+    type: "POST",
+    dataType: "text",
+    data: fd,
+    processData: false,
+    contentType: false
+  };
+  $.ajax(
+    "https://tomo.syo.tokyo/gifconverter/cgi/convert_movie.php",
+    postData
+  ).done(function( text ){
+    alert(text);
   });
-}
-
-function AjaxProc(url, postdata, callback){
-  var req = new XMLHttpRequest();
-  req.open('POST', url, true);
-  req.setRequestHeader('content-type','application/x-www-form-urlencoded;charset=UTF-8');
-  req.send('name=' + encodeURIComponent(document.fm.name.value));
-  var data = eval('(' + req.responseText + ')');
-  alert(data);
-}
+});
 </script>
 </head>
 <body>
 <div id="page">
 
 <div id="upload-area">
-  <form onchange="uploadMovie();">
-    <input type="file" id="upload_movie_form" style="display: none;">
+  <form class="movieform">
+    <input type="file" id="upload_movie_form" name="movie_form" style="display: none;">
   </form>
+<input id="hoge" type="hidden" value="hoge">
   <div id="upload-area-send-button" onclick="uploadMovieButton();">Upload</div>
 </div>
 <div style="width:800px;margin:20px auto 0px;">
