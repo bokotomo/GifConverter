@@ -1,16 +1,13 @@
 @charset "utf-8";
 
-html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em,font,img,b,u,i,ol,ul,li,form,label,table,caption,tbody,tfoot,thead,tr,th,td{margin: 0;padding: 0;}
-img,div{border-width:0px;}
+html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em,font,img,b,u,i,ol,ul,li,form{margin: 0;padding: 0;}
+img,div{border-width:0;}
 a{text-decoration: none;}
 img{vertical-align: bottom;}
 textarea {resize: none;}
 body {
 	font-family:  "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "游ゴシック", YuGothic, "メイリオ", Meiryo, sans-serif;
 }
-
-
-/* ヘッダー */
 body{
   background: #f3f6f7;
 }
@@ -23,5 +20,12 @@ body{
 #upload-area-send-button{
   text-align: center;height:35px;line-height:35px;width:120px;margin:auto;border-radius: 5px;background: #f11717;color:#fff;cursor: pointer;
 }
-/*クラス*/
+#gif-show-area{
+  width:800px;margin:20px auto 0px;
+}
+#video-show-area{
+  width:800px;margin:20px auto 0px;
+}
+
+/* className*/
 .clear-fix{clear:both;}
