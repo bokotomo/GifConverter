@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>GifConverter</title>
 <meta name="viewport" content="width=device-width">
-<link rel='stylesheet' href='design.css?id=1'>
+<link rel='stylesheet' href='design.css?id=2'>
 <script src="js/jquery-2.0.2.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -42,7 +42,12 @@ function AjaxProc(url, postdata, callback){
 		}
 	});
 }
-
+function animateUploadBar(per){
+  
+  $("#upload-animation").animate({
+    "width":per + "%"
+  },500);
+}
 $(document).on('click', '#upload-area-send-button', function(){
   var upload_movie_form = document.getElementById("upload_movie_form");
   upload_movie_form.click();
@@ -61,12 +66,14 @@ $(document).on('change', '.movieform', function(){
     processData: false,
     contentType: false
   };
+  animateUploadBar(50);
   $.ajax(
     "https://tomo.syo.tokyo/gifconverter/cgi/convert_movie.php",
     postData
   ).done(function(text){
     alert(text);
     showFiles();
+    animateUploadBar(100);
   });
 });
 </script>
@@ -74,10 +81,14 @@ $(document).on('change', '.movieform', function(){
 <body>
 <div id="page">
   <div id="upload-area">
+    <div style="font-size: 20px;color: #26282b;font-weight: bold;text-align: center;">GifConverter</div>
     <form class="movieform">
       <input type="file" id="upload_movie_form" name="movie_form" style="display: none;">
     </form>
     <input id="hoge" type="hidden" value="hoge">
+    <div id="upload-animation-area">
+      <div id="upload-animation"></div>
+    </div>
     <div id="upload-area-send-button">Upload</div>
   </div>
   <div id="gif-show-area">
