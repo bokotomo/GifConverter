@@ -1,9 +1,12 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 
+
 run();
 
 function run(){
+  $responseData = array();
+  $checkFileuploadFlag=false;
   if($_FILES["file"]["tmp_name"]){
     list($fileName, $fileType) = explode(".", $_FILES['file']['name']);
     checkFileType($fileType);
@@ -14,8 +17,12 @@ function run(){
       $runFile = __DIR__."/run.sh";
       $videoFile = __DIR__."/../video/{$fileName}";
       system("sh {$runFile} {$videoFile}");
+      $checkFileuploadFlag=true;
     }
   }
+  
+  $responseData["uploadFlag"] = $checkFileuploadFlag;
+  echo json_encode($responseData);
 }
 
 function checkFileType($fileType){
