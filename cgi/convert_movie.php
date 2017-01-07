@@ -1,7 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 
-
 run();
 
 function run(){
@@ -17,10 +16,10 @@ function run(){
       $runFile = __DIR__."/run.sh";
       $videoFile = __DIR__."/../video/{$fileName}";
       system("sh {$runFile} {$videoFile}");
-      $checkFileuploadFlag=true;
+      $checkFileuploadFlag = true;
     }
   }
-  
+
   $responseData["uploadFlag"] = $checkFileuploadFlag;
   echo json_encode($responseData);
 }
